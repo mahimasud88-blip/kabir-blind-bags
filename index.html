@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kabir's Blind Bags</title>
+<style>
+body{margin:0;background:#FFD54F;font-family:Arial,sans-serif;text-align:center}
+.container{max-width:700px;margin:auto;padding:30px}
+button,a.btn{display:inline-block;background:#F4511E;color:white;text-decoration:none;
+padding:18px 30px;border-radius:14px;font-size:28px;font-weight:bold;margin:15px}
+input{font-size:24px;padding:14px;width:90%;max-width:500px;border-radius:10px}
+h1{font-size:52px;color:#D84315}
+h2{font-size:40px;color:#D84315}
+p{font-size:28px}
+img.qr{width:280px;height:280px}
+.page{display:none}
+.page.active{display:block}
+</style>
+</head>
+<body>
+<div class="container">
+<div id="home" class="page active">
+<h1>🎁 Kabir's Blind Bags</h1>
+<a class="btn" href="#" onclick="show('order')">Start Order</a>
+</div>
+
+<div id="order" class="page">
+<h2>Your Name</h2>
+<input id="name"><br>
+<h2>Blind Bag</h2>
+<input id="bag"><br><br>
+<button onclick="finish()">Finish Order</button>
+</div>
+
+<div id="done" class="page">
+<h1>✅ Order Sent!</h1>
+<p>Scan this QR code to open the Waiting App.</p>
+<img class="qr" src="qr_waiting.png" alt="QR Code">
+<p>or tap below:</p>
+<a class="btn" href="waiting.html">Open Waiting App</a>
+</div>
+</div>
+<script>
+function show(id){
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+}
+function finish(){show('done');}
+</script>
+</body>
+</html>

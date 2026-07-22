@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#FFD54F;
+    text-align:center;
+    padding:40px;
+}
+
+h1{
+    color:#F4511E;
+    font-size:40px;
+}
+
+#qrcode{
+    margin:40px auto;
+    width:256px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Scan to Open Waiting App</h1>
+
+<div id="qrcode"></div>
+
+<script>
+new QRCode(document.getElementById("qrcode"), {
+    text: "https://mahimasud88-blip.github.io/kabir-blind-bags/waiting.html",
+    width: 256,
+    height: 256
+});
+</script>
+
+</body>
+</html>
