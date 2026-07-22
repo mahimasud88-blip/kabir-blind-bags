@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kabir's Blind Bags</title>
+<style>
+body{margin:0;font-family:Arial;background:#FFD54F}
+.page{display:none;min-height:100vh;justify-content:center;align-items:center;padding:20px}
+.page.active{display:flex}
+.card{background:#fff;max-width:430px;width:100%;padding:28px;border-radius:24px;box-shadow:0 10px 25px rgba(0,0,0,.2);text-align:center}
+h1,h2{color:#F4511E}
+input{width:100%;padding:14px;margin:18px 0;border-radius:12px;border:2px solid #F4511E;font-size:18px}
+button{width:100%;padding:14px;margin-top:10px;border:none;border-radius:12px;background:#F4511E;color:#fff;font-size:18px;cursor:pointer}
+button:hover{background:#D84315}
+img{width:220px;height:220px;margin:15px auto;display:block;border-radius:12px}
+.small{color:#666;font-size:14px}
+</style>
+</head>
+<body>
+
+<div id="home" class="page active"><div class="card">
+<h1>🎁 Kabir's Blind Bags</h1>
+<button onclick="show('name')">🛒 Start Orders</button>
+<button onclick="show('info')">ℹ️ Info</button>
+<button onclick="show('ceo')">👑 About the CEO</button>
+</div></div>
+
+<div id="name" class="page"><div class="card">
+<h2>Your Name</h2>
+<input id="n" placeholder="Enter your name">
+<button onclick="show('bag')">Next ➜</button>
+</div></div>
+
+<div id="bag" class="page"><div class="card">
+<h2>Which Blind Bag?</h2>
+<input id="b" placeholder="Type the blind bag">
+<button onclick="show('type')">Next ➜</button>
+</div></div>
+
+<div id="type" class="page"><div class="card">
+<h2>Choose One</h2>
+<button onclick="finish('Handmade')">🖍️ Handmade</button>
+<button onclick="finish('Printable')">🖨️ Printable</button>
+</div></div>
+
+<div id="finish" class="page"><div class="card">
+<h1>🎉 Order Sent!</h1>
+<p id="summary"></p>
+<p><b>Scan this QR code to open the Waiting App.</b></p>
+<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=waiting.html" alt="QR Code">
+<p class="small">When both files are in the same folder, you can also press the button below.</p>
+<button onclick="window.location.href='waiting.html'">📱 Open Waiting App</button>
+<button onclick="show('home')">🏠 Home</button>
+</div></div>
+
+<div id="info" class="page"><div class="card">
+<h2>ℹ️ Info</h2>
+<p>Welcome to Kabir's Blind Bags!</p>
+<button onclick="show('home')">Back</button>
+</div></div>
+
+<div id="ceo" class="page"><div class="card">
+<h2>👑 About the CEO</h2>
+<p>Hi! I'm Kabir. Thanks for visiting my shop!</p>
+<button onclick="show('home')">Back</button>
+</div></div>
+
+<script>
+function show(id){
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
+function finish(type){
+ document.getElementById('summary').innerHTML=
+ '<b>Name:</b> '+document.getElementById('n').value+
+ '<br><b>Blind Bag:</b> '+document.getElementById('b').value+
+ '<br><b>Type:</b> '+type;
+ show('finish');
+}
+</script>
+</body>
+</html>
